@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1{
+    font-family: 'Cambria';
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    margin: 2rem;
+}
+
+.listaPrincipal {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+ol li button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #37bbed;
+    color: white;
+    cursor: grab;
+}
+
+.botonEliminar {
+    padding-right: .5rem;
+    cursor: pointer;
+}
+
+.botonEliminar:hover {
+    color: black;
+}
+
+.botonEnganchar {
+    padding-left: 2rem;
+    cursor: pointer;
+}
+
+.botonEnganchar:hover {
+    color: black;
+}
+
+#botonImprimir {
+    padding: .5rem;
+    font-size: 1.5rem;
+    background-color: white;
+    color: green;
+    border: none;
+    cursor: pointer;
+}
+
+#botonImprimir:hover {
+    color: darkgreen;
+}
