@@ -10,11 +10,16 @@ const tituloDisponibles = document.getElementById('tituloDisponibles');
 
 const generarLista = () => {
     temas.map((tema) => {
-        const botonTema = document.createElement('li');
-        botonTema.id = `${tema}`;
-        botonTema.classList.add('temaListado');
-        botonTema.innerHTML = `<button class='botonEliminar'><i class="fa-solid fa-trash-can"></i></button> ${tema} <button class='botonLink'><i class="fa-solid fa-link"></i></button>`;
-        listaTemas.appendChild(botonTema);
+        if(Array.isArray(tema)) {
+            //recorrer el subarray y renderizarlo como un solo li con boton para eliminar y boton para desenganchar;
+        } else {
+            const botonTema = document.createElement('li');
+            botonTema.id = `${tema}`;
+            botonTema.classList.add('temaListado');
+            botonTema.innerHTML = `<button class='botonEliminar'><i class="fa-solid fa-trash-can"></i></button> ${tema} <button class='botonLink'><i class="fa-solid fa-link"></i></button>`;
+            listaTemas.appendChild(botonTema);
+        }
+        
     });
 
     const ultimoBotonLink = listaTemas.lastChild.lastChild;
@@ -80,14 +85,13 @@ function reciclarTema(id) {
 
 //enganchar temas
 function engancharTemas(a, b) {
-    if(!a.parentElement.classList.contains('enganchado')) {
+    if(!a.parentElement.id) {
         //console.log(`${a.id} no esta enganchado, hay que engancharlo con ${b.id}`);
-        const enganchados = document.createElement('ul');
-        enganchados.classList.add('enganchado');
-        enganchados.id = `${a.id}/${b.id}`;
-        enganchados.appendChild(a);
-        enganchados.appendChild(b);
-        listaTemas.appendChild(enganchados);    
+        const indexA = temas.findIndex(tema => tema === a.id);
+        //const indexB = temas.findIndex(tema => tema === b.id );
+        let enganchadas = temas.splice(indexA, 2);
+        temas.splice(indexA, 0, enganchadas);
+        console.log(temas);
     } else {
         console.log('hay que sumarlo al enganchado');
     }
