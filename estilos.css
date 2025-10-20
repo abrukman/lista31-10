@@ -5,9 +5,18 @@
     font-family: 'Roboto', sans-serif;
 }
 
-h1{
+h1, .tituloSecundario {
     font-family: 'Cambria';
     text-align: center;
+}
+
+.tituloSecundario {
+    margin-top: 2rem;
+    font-size: medium;
+}
+
+.oculto {
+    display: none;
 }
 
 .container {
@@ -24,34 +33,55 @@ h1{
     display: flex;
     flex-direction: column;
     gap: .25rem;
+    list-style-position: inside;
 }
 
-ol li button {
+.listaDisponibles {
+    margin: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: .25rem;
+    list-style: none;
+}
+
+.temaListado, .temaDisponible {
+    /* display: flex;
+    justify-content: space-between;
+    gap: .5rem; */
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 20px;
-    background-color: #37bbed;
     color: white;
-    cursor: grab;
 }
 
-.botonEliminar {
+.temaListado {
+    background-color: #37bbed;
+}
+
+.temaDisponible {
+    background-color: red;
+}
+
+.botonEliminar, .botonLink, .botonReciclar {
+    border: none;
+    background-color: inherit;
+    color: white;
+    cursor: pointer;
+}
+
+.botonEliminar, .botonReciclar {
     padding-right: .5rem;
-    cursor: pointer;
 }
 
-.botonEliminar:hover {
+.botonLink {
+    padding-left: .5rem;
+    float: inline-end;
+}
+.botonEliminar:hover, .botonLink:hover, .botonReciclar:hover {
     color: black;
 }
 
-.botonEnganchar {
-    padding-left: 2rem;
-    cursor: pointer;
-}
-
-.botonEnganchar:hover {
-    color: black;
-}
 
 #botonImprimir {
     padding: .5rem;
