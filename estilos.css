@@ -24,7 +24,7 @@ h1, .tituloSecundario {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90vw;
+    /* width: 90vw */;
     margin: 2rem;
 }
 
@@ -41,7 +41,15 @@ h1, .tituloSecundario {
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: .25rem;
+    list-style: none;
+}
+
+.enganchado {
+    display: inline-flex;
+    flex-direction: row;
+    justify-items: center;
     list-style: none;
 }
 
@@ -63,11 +71,12 @@ h1, .tituloSecundario {
     background-color: red;
 }
 
-.botonEliminar, .botonLink, .botonReciclar {
+.botonEliminar, .botonLink, .botonReciclar, .botonUnLink {
     border: none;
     background-color: inherit;
     color: white;
     cursor: pointer;
+    /* display: inline-flex; */
 }
 
 .botonEliminar, .botonReciclar {
@@ -78,8 +87,13 @@ h1, .tituloSecundario {
     padding-left: .5rem;
     float: inline-end;
 }
-.botonEliminar:hover, .botonLink:hover, .botonReciclar:hover {
+.botonEliminar:hover, .botonLink:hover, .botonReciclar:hover, .botonUnLink:hover {
     color: black;
+}
+
+.botonUnLink {
+    padding-left: .5rem;
+    padding-right: .5rem;
 }
 
 

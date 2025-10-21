@@ -11,7 +11,20 @@ const tituloDisponibles = document.getElementById('tituloDisponibles');
 const generarLista = () => {
     temas.map((tema) => {
         if(Array.isArray(tema)) {
-            //recorrer el subarray y renderizarlo como un solo li con boton para eliminar y boton para desenganchar;
+            const liContenedor = document.createElement('li');
+            liContenedor.classList.add('temaListado');
+            const enganchado = document.createElement('ul');
+            enganchado.classList.add('enganchado');
+            tema.map((subtema => {
+                const botonSubTema = document.createElement('li');
+                botonSubTema.id = `${subtema}`;
+                botonSubTema.classList.add('temaEnganchado');
+                botonSubTema.innerHTML = ` ${subtema} <button class='botonUnLink'><i class="fa-solid fa-link-slash"></i></i></button>`
+                enganchado.appendChild(botonSubTema);
+            }));
+            liContenedor.innerHTML = "<button class='botonEliminar'><i class='fa-solid fa-trash-can'></i></button>";
+            liContenedor.appendChild(enganchado);
+            listaTemas.appendChild(liContenedor);
         } else {
             const botonTema = document.createElement('li');
             botonTema.id = `${tema}`;
@@ -84,16 +97,23 @@ function reciclarTema(id) {
 };
 
 //enganchar temas
-function engancharTemas(a, b) {
-    if(!a.parentElement.id) {
-        //console.log(`${a.id} no esta enganchado, hay que engancharlo con ${b.id}`);
-        const indexA = temas.findIndex(tema => tema === a.id);
+function engancharTemas(a) {
+    if(temas.includes(a)) {
+        const indexA = temas.findIndex(tema => tema === a);
         //const indexB = temas.findIndex(tema => tema === b.id );
         let enganchadas = temas.splice(indexA, 2);
         temas.splice(indexA, 0, enganchadas);
-        console.log(temas);
+        listaTemas.innerHTML = '';
+        generarLista();
+    } else if(temas.some(enganchados => enganchados.includes(a))) {
+        confirm('Enganchar más de dos temas puede hacer algunos músicos se cansen de más. Estás seguro?')
+        let sumarAenganchado = temas.findIndex(enganchados => enganchados.includes(a));
+        let temaAsumar = temas.splice(sumarAenganchado + 1, 1)[0];
+        temas[sumarAenganchado].push(temaAsumar);
+        listaTemas.innerHTML = '';
+        generarLista();     
     } else {
-        console.log('hay que sumarlo al enganchado');
+        alert('error');
     }
     
 
@@ -109,11 +129,9 @@ listaTemas.addEventListener('click', function(event) {
         const temaABorrar = botonEliminar.parentElement.id;
         borrarTema(temaABorrar);
     } else if (botonLink) {
-        const tema = botonLink.parentElement;
+        const tema = botonLink.parentElement.id;
         console.log(tema);
-        const engancharCon = botonLink.parentElement.nextElementSibling;
-        console.log(engancharCon);
-        engancharTemas(tema, engancharCon);
+        engancharTemas(tema);
     };
 });
 
