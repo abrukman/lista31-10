@@ -22,6 +22,11 @@ const generarLista = () => {
                 botonSubTema.innerHTML = ` ${subtema} <button class='botonUnLink'><i class="fa-solid fa-link-slash"></i></i></button>`
                 enganchado.appendChild(botonSubTema);
             }));
+            
+            const ultimoBotonUnLink = enganchado.lastChild.lastChild;
+            enganchado.lastChild.removeChild(ultimoBotonUnLink);
+            enganchado.lastChild.innerHTML += '<button class="botonLink"><i class="fa-solid fa-link"></i></button>';
+
             liContenedor.innerHTML = "<button class='botonEliminar'><i class='fa-solid fa-trash-can'></i></button>";
             liContenedor.appendChild(enganchado);
             listaTemas.appendChild(liContenedor);
@@ -130,7 +135,6 @@ listaTemas.addEventListener('click', function(event) {
         borrarTema(temaABorrar);
     } else if (botonLink) {
         const tema = botonLink.parentElement.id;
-        console.log(tema);
         engancharTemas(tema);
     };
 });
