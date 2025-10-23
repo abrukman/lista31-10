@@ -65,6 +65,11 @@ h1, .tituloSecundario {
 
 .temaListado {
     background-color: #37bbed;
+    cursor: grab;
+}
+
+.temaListado:active {
+    cursor: grabbing;
 }
 
 .temaDisponible {
@@ -97,7 +102,7 @@ h1, .tituloSecundario {
 }
 
 
-#botonImprimir {
+#botonImprimir, #botonCopiar {
     padding: .5rem;
     font-size: 1.5rem;
     background-color: white;
@@ -106,6 +111,48 @@ h1, .tituloSecundario {
     cursor: pointer;
 }
 
-#botonImprimir:hover {
+#botonImprimir:hover, #botonCopiar:hover {
     color: darkgreen;
+}
+
+/*instrucciones*/
+
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.5); /* fondo semitransparente */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  line-height: 3rem;
+}
+
+.modal-content ul {
+    list-style-type: '- ';
+}
+
+.cerrar {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#instruccionesLink {
+    margin: 1rem;
+    text-decoration: none;
+    color: #37bbed;
+    font-weight: 500;
 }
