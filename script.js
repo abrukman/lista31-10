@@ -1,4 +1,4 @@
-let temas = ['no puede fallar', 'tengo una banda', 'la tienda', 'soñé', 'hummus', 'pibes crudos', 'fidelina', 'pobre cotur', 'nada que ver', 'invierno', 'pobre niño rico', 'ape', 'duerme', 'por las noches', 'ceviche', 'bailando en cuero', 'artístico', 'yo no me caí del cielo'];
+let temas = ['no puede fallar', 'tengo una banda', 'la tienda', 'soñé', 'hummus', 'pibes crudos', 'fidelina', 'pobre cotur', 'nada que ver', 'invierno', 'pobre niño rico', 'ape', 'duerme', 'por las noches', 'ceviche', 'bailando en cuero', 'artístico', 'látigo', 'cavashitov', 'yo no me caí del cielo'];
 const temasDisponibles = [];
 const listaTemas = document.getElementById('listaTemas');
 const listaDisponibles = document.getElementById('temasDisponibles');
