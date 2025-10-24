@@ -129,12 +129,15 @@ function engancharTemas(a) {
         listaTemas.innerHTML = '';
         generarLista();
     } else if(temas.some(enganchados => enganchados.includes(a))) {
-        confirm('Enganchar más de dos temas puede hacer algunos músicos se cansen de más. Estás seguro?')
-        let sumarAenganchado = temas.findIndex(enganchados => enganchados.includes(a));
-        let temaAsumar = temas.splice(sumarAenganchado + 1, 1)[0];
-        temas[sumarAenganchado].push(temaAsumar);
-        listaTemas.innerHTML = '';
-        generarLista();     
+        if(confirm('Enganchar más de dos temas puede hacer algunos músicos se cansen de más. Estás seguro?')) {
+            let sumarAenganchado = temas.findIndex(enganchados => enganchados.includes(a));
+            let temaAsumar = temas.splice(sumarAenganchado + 1, 1)[0];
+            temas[sumarAenganchado].push(temaAsumar);
+            listaTemas.innerHTML = '';
+            generarLista();
+        } else {
+            return;
+        }     
     } else {
         alert('error');
     }
